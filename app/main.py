@@ -6,8 +6,8 @@ from .api import router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)  # создаем таблицы
-    yield  # здесь можно будет делать shutdown-процедуры
+    Base.metadata.create_all(bind=engine)
+    yield
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(router)

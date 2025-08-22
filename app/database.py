@@ -7,7 +7,6 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# Критически важный импорт моделей!
 from . import models  # Должен быть после объявления Base
 
 def get_db():

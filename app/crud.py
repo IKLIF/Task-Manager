@@ -62,12 +62,10 @@ def update_task(db: Session, task_update: schemas.TaskUpdate):
 
     update_data = task_update.dict(exclude_unset=True)
 
-    # Обновляем только те поля, которые были явно переданы (даже если они None)
     for field, value in update_data.items():
         if value is not None:
             setattr(db_task, field, value)
 
-    # Сохраняем изменения
     db.commit()
     db.refresh(db_task)
     return db_task
